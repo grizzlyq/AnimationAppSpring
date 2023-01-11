@@ -18,7 +18,7 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var delayLabel: UILabel!
     
-    let data = Animation.getAnimation()
+    private let data = Animation.getAnimation()
     
     private var index = 0
     
@@ -28,7 +28,7 @@ class AnimationViewController: UIViewController {
     }
 
     @IBAction func runAnimation() {
-        if index > data.count {
+        if index < data.count {
             setAnimation()
             index += 1
             
@@ -48,7 +48,7 @@ class AnimationViewController: UIViewController {
            
        }
        
-       private func setAnimation() {
+    private func setAnimation() {
            springView.animation = data[index].animation
            springView.curve = data[index].curve
            springView.force = CGFloat(data[index].force)
